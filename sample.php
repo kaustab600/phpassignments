@@ -47,49 +47,96 @@
 <img src="<?php echo $target_file ?>">
 <br>
 
-<?php  echo "Hello ".$fullname;?>
+<?php  echo "Hello ".$fullname;
 
-<?php
-  $text_line = $_POST['subjectmarks'];
-   /*$text_line = explode("\n",$text_line);
 
-   //echo $text_line[1];
-   $var1 = $text_line[0];
-   $second_line = explode('|',$var1);
-   echo $second_line[1];
-   //$second_line = explode('|',$text_line[1])
-  // echo $second_line[0];
-  */
+  $text_line1 = $_POST['subjectmarks'];
 
-    $text_line = explode("\n", $text_line);
-            $textAreaArray = array();
-            foreach ($text_line as $data){
-               $format_data = explode('|',$data);
-               $textAreaArray[trim($format_data[0])] = trim($format_data[1]);
-           }
 
-        
+  $text_line = explode(PHP_EOL,$text_line1);
 
-        foreach ($textAreaArray as $key => $value){
-                  echo "<tr>";
-                  echo "<td>" . $key . "</td>";
-                  echo "<td>" . $value . "</td>";
-          }
+  function trimvalues(&$key)
+  {
+      $key = trim($key," \r \t \n \0");
+
+  }
+
+  array_walk($text_line, 'trimvalues');
+
+  /*function removenewline($item)
+  {
+    echo "inside func<br>";
+    $len = strlen($item);
+    $key = array_keys($item);
+    echo $len." ".$key."<br>";
+    if($len == 0)
+    { 
+      
+      echo $key."<br>";
+      unset($text_line[$key]);
+      echo "unseted";
+    }
+  }
+
+  array_walk($text_line,'removenewline');*/
+
+//-------------used for removing any key if  empty values are found 
+  foreach($text_line as $key => $value)
+  {
+    $len = strlen($value);
+    echo $len." ".$key."<br>";
+    if($len == 0)
+    { 
+      
+      //echo $key."<br>";
+      unset($text_line[$key]);
+      //echo "unseted";
+    }
+
+  }
+
+  
+  echo"<br>";
+  var_dump($text_line);
+  
+
+
+  $arraytext = array();
+
+  //print_r($text_line);
+  foreach($text_line as $i => $value)
+  {
+    //print_r($text_line[$i]);
+    $var = explode('|',$text_line[$i]);
+    $temp = $var[0];
+    $temp2 = $var[1];
+    $arraytext[$temp] = intval($temp2);
+    //echo "<br>";
+  }
+
+ // print_r($arraytext);
+
+  //$len = count($arraytext);
+  //echo $len;
+       
 ?>
 
-<!--<table cellpadding="10" cellspacing="5">
-		<tr>
-		<th>subject</th>
-		<th>marks</th>
-	    </tr>
-	    <?php
-	    //	$i=0;
-	    //	while ($i < count($text_line)) {
-	    		
-	    	}
+<table cellpadding="10" cellspacing="5">
+  <tr>
+    <th>subject</th>
+    <th>marks</th>
+  </tr>
+ <?php
+ foreach($arraytext as $key => $value)
+ {
+    echo "<tr><td>".$key."</td><td>".$arraytext[$key]."</td></tr>";
 
-				
-	    ?>-->
+ }
+
+
+ ?>
+</table>
+
 
 	
 </table>  

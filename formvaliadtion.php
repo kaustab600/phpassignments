@@ -71,8 +71,11 @@
 			
 		}
 
-
-
+		/*.textpart{
+			width:200px;
+			height: 60px;
+		}
+			*/
 
 	</style>
    <!-- <script type="text/javascript">
@@ -133,9 +136,7 @@
 
 
     <div class="validator">
-    	<textarea cols="20" rows= "5" name="subjectmarks">
-    		
-    	</textarea>
+    <textarea  name="subjectmarks" rows="6" cols="20" class="textpart"></textarea>
     </div>
 
 
