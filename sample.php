@@ -96,8 +96,8 @@
   }
 
   
-  echo"<br>";
-  var_dump($text_line);
+  //echo"<br>";
+  //var_dump($text_line);
   
 
 
@@ -121,7 +121,7 @@
        
 ?>
 
-<table cellpadding="10" cellspacing="5">
+<table cellpadding="10" cellspacing="5" border="1px solid black">
   <tr>
     <th>subject</th>
     <th>marks</th>
