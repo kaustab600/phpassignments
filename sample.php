@@ -17,11 +17,11 @@
 	
 		   $fullname = $firstname." ".$secondname;
 		   
-
+       
 
 		   if (!empty($_FILES) && isset($_FILES['ff'])) {
 
-    
+            echo "inside files<br>";
             $target_dir = "./uploadedfiles/";
             $target_file = $target_dir . basename($_FILES["ff"]["name"]);
             $ftmp=$_FILES['ff']['tmp_name'];
@@ -39,6 +39,11 @@
 
    // echo "Status: {$status}<br/>\n";
 
+}
+
+else{
+  header("Location:./formvalidation.php?msg=false");
+  exit();
 }
            
        

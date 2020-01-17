@@ -115,7 +115,7 @@
 <body>
 
 	<div id="validatorform">
-	<form  name="form1" id="form1" method="post" action="http://localhost/sample.php" enctype="multipart/form-data">
+	<form  name="form1" id="form1" method="post" action="sample.php" enctype="multipart/form-data">
 	<div class="validator">
 		Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" required onkeyup="OnBlurInput()"/>
 	</div>
@@ -139,6 +139,10 @@
     <textarea  name="subjectmarks" rows="6" cols="20" class="textpart"></textarea>
     </div>
 
+    <div class="validator">
+    	<input type="tel" name="teleohoneno" pattern="[]">
+    </div>
+
 
     <div class="validator">
 	<input type="submit" name="submit" value="submit">
@@ -148,7 +152,16 @@
 
     </div>
 
-    
+   <!-- <?php
+
+    	/*$urlname = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    	echo $urlname;
+    	if(strpos($urlname,"msg=false"))
+    	{
+    		echo " <pno image is present";
+    	}*/
+
+    ?>-->
 
     
 	
