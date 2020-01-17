@@ -21,15 +21,57 @@
             full.value = str3;
         }
 
+        function func(){
+			var validcharacters = /^[1-9][0-9]+$/;
+			var str1 = document.getElementById('telno').value;
+			if(telno.value.match(validcharacters))
+			{		
+			  var prefix = "+91";
+			  var len = str1.length;
+			
+			if(len == 10)
+			{
+				telno.value = prefix + str1;
+			}
+			else
+			{
+				telno.value="";
+				alert("please enter valid contactno with 10 digits");
+			}
+		   }
+
+		  else
+           {
+      			alert('Please input numeric characters only');
+      			//document.telephoneno.focus();
+      			
+      		}
+		}
+
+		function emailcheck()
+		{
+			//var pattern = /^\w*[-]?\w+@\w+(\.\w{2,3}){1,3}$/ ;
+			var pattern = /^\w*[-]?\w+@\w+(\.\w{2,3}){1,3}$/;
+			var inputtext = document.getElementById("emailid").value;
+			if (!inputtext.match(pattern))
+			{
+				emailid.value = "";
+				alert(" enter valid email");
+				document.emailid.focus();
+
+			}
+			else
+			{
+				alert("successful email");
+			}
+
+		}
+
 		
 
 	</script>
 
 	<style type="text/css">
-		/*#validatorform{
-			text-align: center;
-			transform: translateY(50%);
-		}*/
 
 		.validator{
 			display:block;
@@ -37,64 +79,17 @@
 
 		}
 
-	   /* .validator input{
-			margin-left: 20px;
-		}
-
-		.validator:nth-child(2){
-			
-			padding-left: 16px;
-		}
-
-		.validator:nth-child(2) input{
-			margin-left: 25px;
-
-
-		}
-
-		.validator:nth-child(3){
-			padding-right: 5px;
-			margin-right: 5px;
-		}
-
-		#validatorform{
-			width:500px;
-			height: 20vh;
-			margin-left: 30%;
-			padding-top: 30px;
-		}
-
-		*/
+	  
 				
 		#form1{
 			padding: 10px;
 			
 		}
 
-		/*.textpart{
-			width:200px;
-			height: 60px;
-		}
-			*/
+	
 
 	</style>
-   <!-- <script type="text/javascript">
-		function allLetter(inputtxt1 ,inputtxt2 )
-      { 
-      var letters = /^[A-Za-z]+$/;
-      if(inputtxt1.value.match(letters) && inputtxt2.value.match(letters))
-      {
-      alert('Your name have accepted : you can try another');
-      /*<?php //header("Location:http://localhost/sample.php"); ?>*/
-      return true;
-      }
-      else
-      {
-      alert('Please input alphabet characters only');
-      return false;
-      }
-      }
-	</script>-->
+  
 </head>
 
 <!--<?php
@@ -115,13 +110,13 @@
 <body>
 
 	<div id="validatorform">
-	<form  name="form1" id="form1" method="post" action="sample.php" enctype="multipart/form-data">
+	<form  name="form1" id="form1" method="post" action="http://localhost/sample.php" enctype="multipart/form-data">
 	<div class="validator">
-		Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" required onkeyup="OnBlurInput()"/>
+		Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required onkeyup="OnBlurInput()"/>
 	</div>
 
 	<div class="validator">
-	Lastname:<input type="text" name="secondname" id="second" pattern="[a-zA-Z ]{1,}" required  onkeyup="OnBlurInput()"/>
+	Lastname:<input type="text" name="secondname" id="second" placeholder="enter Lastname" pattern="[a-zA-Z ]{1,}" required  onkeyup="OnBlurInput()"/>
     </div>
 
     <div class="validator">
@@ -136,13 +131,18 @@
 
 
     <div class="validator">
-    <textarea  name="subjectmarks" rows="6" cols="20" class="textpart"></textarea>
+    <textarea  name="subjectmarks" rows="6" cols="20" class="textpart" placeholder="enter subject|marks"></textarea>
     </div>
 
     <div class="validator">
-    	<input type="tel" name="teleohoneno" pattern="[]">
+    	ContactNo:<input type="text" name="telephoneno" id="telno" placeholder="enter valid  contactno" onblur="func()" value="" required>
     </div>
 
+
+    <div class="validator">
+    	emailid:<input type="text" id="emailid" name="emailid" placeholder="enter email id" onblur="emailcheck()" >
+    	
+    </div>
 
     <div class="validator">
 	<input type="submit" name="submit" value="submit">

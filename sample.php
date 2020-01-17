@@ -8,12 +8,17 @@
 			width:200px;
 		}
 	</style>
+
+
 </head>
 <body>
 <?php
 			
 		   $firstname = $_POST['firstname'];
 		   $secondname =$_POST['secondname'];
+       $emailid = $_POST['emailid'];
+       $contactno = $_POST['telephoneno'];
+
 	
 		   $fullname = $firstname." ".$secondname;
 		   
@@ -21,7 +26,7 @@
 
 		   if (!empty($_FILES) && isset($_FILES['ff'])) {
 
-            echo "inside files<br>";
+         
             $target_dir = "./uploadedfiles/";
             $target_file = $target_dir . basename($_FILES["ff"]["name"]);
             $ftmp=$_FILES['ff']['tmp_name'];
@@ -89,7 +94,7 @@ else{
   foreach($text_line as $key => $value)
   {
     $len = strlen($value);
-    echo $len." ".$key."<br>";
+    //echo $len." ".$key."<br>";
     if($len == 0)
     { 
       
@@ -134,7 +139,7 @@ else{
  <?php
  foreach($arraytext as $key => $value)
  {
-    echo "<tr><td>".$key."</td><td>".$arraytext[$key]."</td></tr>";
+    echo "<tr><td>".$key."</td><td>".$value."</td></tr>";
 
  }
 
@@ -142,12 +147,110 @@ else{
  ?>
 </table>
 
+ContactNo:<?php echo $contactno;    ?><br><br>
 
-	
-</table>  
+Email id:<?php  echo $emailid;   ?> <br><br>
+
+<?php
+
+if(isset($_POST['submit']))
+{
+
+// set API Access Key
+$access_key = '9c117789243c894c0d837e1e0cfc4c7f';
+
+// set email address
+$email_address = $emailid;
+
+// Initialize CURL:
+$ch = curl_init('http://apilayer.net/api/check?access_key='.$access_key.'&email='.$email_address.'');  
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Store the data:
+$json = curl_exec($ch);
+curl_close($ch);
+
+// Decode JSON response:
+$validationResult = json_decode($json, true);
+
+// Access and use your preferred validation result objects
+ $validationResult['format_valid'];
+ $validationResult['smtp_check'];
+  $validationResult['mx_found'];
+ $validationResult['score'];
+
+      if( $validationResult['mx_found'])
+      {
+          echo "<script type='text/javascript'>alert('valid email');</script>";
+          echo $validationResult['smtp_check'];
+      }
+
+}              
+
+
+?>
+
+<form name="frm1" action="<?php echo $_SERVER['PHP_SELF']; ?>"  method="POST">
+<input type="submit" name="download" value="Download" />
+</form>
+<?php
+
+     
+
+       $firstname = $_POST['firstname'];
+     $secondname =$_POST['secondname'];
+       $emailid = $_POST['emailid'];
+       $contactno = $_POST['telephoneno'];
+
+//header part
+
+header("Content-type: application/vinod.ms-word");
+
+header("Content-Disposition: attachment;Filename=Userdetail.doc");
+
+//starting html tag
+
+echo "<html>";
+
+echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=Windows-1252\">";
+
+//body part start here
+
+echo "<body>";
+
+//print the content
+
+
+echo "<table cellpadding='10' cellspacing='5' border ='1px solid black'>";
+echo "<tr>";
+echo "<td>FirstName</td>";
+echo "<td>".$firstname."</td>";
+echo "</tr>";
+echo "<tr>";
+echo "<td>SecondName</td>";
+echo "<td>".$secondname."</td>";
+echo "</tr>";
+echo "<tr>";
+echo "<td>EmailId</td>";
+echo "<td>".$emailid."</td>";
+echo "</tr>";
+echo "<tr>";
+echo "<td>contactno</td>";
+echo "<td>".$contactno."</td>";
+echo "</tr>";
+echo "</table>";
+
+
+echo "</body>";
+
+//end html tag
+
+echo "</html>";
+
+
+?>
+
 </body>
-
-
 </html>
 
 
