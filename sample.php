@@ -13,11 +13,17 @@
 </head>
 <body>
 <?php
-			
+			 session_start();
+
 		   $firstname = $_POST['firstname'];
 		   $secondname =$_POST['secondname'];
        $emailid = $_POST['emailid'];
        $contactno = $_POST['telephoneno'];
+
+       $_SESSION['first'] = $firstname;
+        $_SESSION['second'] = $secondname;
+         $_SESSION['email'] = $emailid;
+          $_SESSION['contact'] = $contactno;
 
 	
 		   $fullname = $firstname." ".$secondname;
@@ -27,9 +33,13 @@
 		   if (!empty($_FILES) && isset($_FILES['ff'])) {
 
          
-            $target_dir = "./uploadedfiles/";
+            $target_dir = "/uploadedfiles/";
             $target_file = $target_dir . basename($_FILES["ff"]["name"]);
+            $_SESSION['target'] = $target_file;
             $ftmp=$_FILES['ff']['tmp_name'];
+            //echo $_SESSION['imgfile'];
+            $_SESSION['img'] = $ftmp;
+            //echo $_SESSION['img'] ;
             
 
             if (move_uploaded_file($ftmp,$target_file)) {
@@ -46,15 +56,11 @@
 
 }
 
-else{
-  header("Location:./formvalidation.php?msg=false");
-  exit();
-}
-           
+       
        
 ?>
 
-<img src="<?php echo $target_file ?>">
+<img src="<?php echo $target_file ?>" >
 <br>
 
 <?php  echo "Hello ".$fullname;
@@ -177,9 +183,11 @@ $validationResult = json_decode($json, true);
  $validationResult['format_valid'];
  $validationResult['smtp_check'];
   $validationResult['mx_found'];
- $validationResult['score'];
+echo $validationResult['score'];
 
-      if( $validationResult['mx_found'])
+
+
+      if( $validationResult['score']>= 0.7 )
       {
           echo "<script type='text/javascript'>alert('valid email');</script>";
           echo $validationResult['smtp_check'];
@@ -190,65 +198,8 @@ $validationResult = json_decode($json, true);
 
 ?>
 
-<form name="frm1" action="<?php echo $_SERVER['PHP_SELF']; ?>"  method="POST">
-<input type="submit" name="download" value="Download" />
-</form>
-<?php
 
-     
-
-       $firstname = $_POST['firstname'];
-     $secondname =$_POST['secondname'];
-       $emailid = $_POST['emailid'];
-       $contactno = $_POST['telephoneno'];
-
-//header part
-
-header("Content-type: application/vinod.ms-word");
-
-header("Content-Disposition: attachment;Filename=Userdetail.doc");
-
-//starting html tag
-
-echo "<html>";
-
-echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=Windows-1252\">";
-
-//body part start here
-
-echo "<body>";
-
-//print the content
-
-
-echo "<table cellpadding='10' cellspacing='5' border ='1px solid black'>";
-echo "<tr>";
-echo "<td>FirstName</td>";
-echo "<td>".$firstname."</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>SecondName</td>";
-echo "<td>".$secondname."</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>EmailId</td>";
-echo "<td>".$emailid."</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>contactno</td>";
-echo "<td>".$contactno."</td>";
-echo "</tr>";
-echo "</table>";
-
-
-echo "</body>";
-
-//end html tag
-
-echo "</html>";
-
-
-?>
+<a href="phptodoc.php">Download</a>
 
 </body>
 </html>

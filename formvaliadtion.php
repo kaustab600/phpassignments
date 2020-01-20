@@ -109,7 +109,7 @@
 
 <body>
 
-	<div id="validatorform">
+	
 	<form  name="form1" id="form1" method="post" action="http://localhost/sample.php" enctype="multipart/form-data">
 	<div class="validator">
 		Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required onkeyup="OnBlurInput()"/>
@@ -150,7 +150,7 @@
 
     
 
-    </div>
+    
 
    <!-- <?php
 

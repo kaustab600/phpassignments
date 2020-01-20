@@ -1,28 +1,11 @@
 <?php
-		session_start();
 
-		$out = '';
-		ob_start();
-
-		if($_SESSION['first'])
-		{
-
-		 $first = $_SESSION['first'] ;
-         $second = $_SESSION['second'] ;
-         $email = $_SESSION['email'] ;
-         $contact = $_SESSION['contact'] ;
-         $imgfile = $_SESSION['target'];
-         
-
-
-header("Content-type: application/vinod.ms-word");
-
-header("Content-Disposition: attachment;Filename=Userdetails.doc");
-
-//starting html tag
-
-
-
+$out = '';
+ob_start();
+$first = 'kaustab';
+$second = 'roy';
+$email = 'kaustavroy@gmail.com';
+$contact = 9007622568;
 echo "<html>";
 
 echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=Windows-1252\">";
@@ -35,10 +18,7 @@ echo "<body>";
 
 echo "<br><br><br><br>";
 echo "<table cellpadding='10' cellspacing='5' border ='1px solid black'>";
-echo "<tr>";
-echo "<td><img src='/var/www/html".$imgfile."'width='100px' height='100px'></td>";
-//readfile('var/www/html/uploadedfiles/head_logo.jpg');
-echo "</tr>";
+
 echo "<tr>";
 echo "<td>FirstName</td>";
 echo "<td>".$first."</td>";
@@ -63,30 +43,18 @@ echo "</body>";
 //end html tag
 
 echo "</html>";
-
 $out .= ob_get_contents();
-
+//ob_flush();
+//echo ' some more text to add to the buffer';
+//$out .= ob_get_contents();
 ob_end_flush();
-
+// check that something was actually written to the buffer
 if (strlen($out) > 0) {
  $file = './uploadedfiles/userdetails' .time() . '.html';
  touch($file); 
  $fh = fopen($file, 'w');
  fwrite($fh, $out);
  fclose($fh);
-} 
-
-session_destroy();
-
-}
-
-else{
-
-	echo "session fault";
-	session_destroy();
-
 }
 
 
-
-?>
