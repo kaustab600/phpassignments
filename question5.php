@@ -2,9 +2,9 @@
 <html>
 <head>
 	<title></title>
-    <script src="myscript.js"></script>
+	<script src="myscript.js"></script>
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
-    <style type="text/css">
+   <style type="text/css">
         *{
       margin:0;
       padding: 0;
@@ -49,7 +49,7 @@
       background-color: #0f0f0f;
     }
 
-    .main{
+     .main{
       float: left;
       width: 100%;
       
@@ -84,26 +84,21 @@
       background-color: black;
       color:white;
     }
-
-    </style>
+   </style>
 </head>
 <body>
-
-    <div class="header">
+     <div class="header">
     <div class="container">
-        <h1>PHP ASSIGNMENTS 2</h1>
+        <h1>PHP ASSIGNMENTS 4</h1>
         <a class="logout" href="logout.php">LOGOUT</a>
-        <h3>Q2)Add a new field to accept user image in addition to the above fields.<br>On submit store the image in the backend and display it with the full name below it.</h3>
-        
-        
-    </div>
+    <h3>Q5)Add a new single text field to the above form that will accept email id. Do not use email id input field type.</h3>
+     </div>
     </div>
 
     <div class="main">
         <div class="container">
-	<form  name="form1" id="form1" method="post" action="phpq2.php" enctype="multipart/form-data">
-	
-    <div class="validator">
+	<form  name="form1" id="form1" method="post" action="phpq5.php" enctype="multipart/form-data">
+        <div class="validator">
         Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required onkeyup="OnBlurInput()"/>
     </div>
 
@@ -118,16 +113,20 @@
     <div class="validator">
      <input type="file" name="ff">
     </div>
-
     <div class="validator">
-	<input type="submit" name="submit" value="submit">
+    <textarea  name="subjectmarks" rows="6" cols="20" class="textpart" placeholder="enter subject|marks"></textarea>
     </div>
-    </form>
-</div>
-</div>
+
+     <div class="validator">
+        ContactNo:<input type="text" name="telephoneno" id="telno" placeholder="enter valid  contactno" onblur="func()" value="" required>
+    </div>
+
+	<div class="validator">
+    	emailid:<input type="text" id="emailid" name="emailid" placeholder="enter email id" onblur="emailcheck()" >
+    </div>
     <?php
-    
-            if($_GET['q'])
+
+        if($_GET['q'])
             {
                  $q = $_GET['q'];
                 //echo "question".$q.".php";
@@ -141,39 +140,39 @@
                    exit();
                 }
                 
-                
             }
 
-
-
-    	if($_GET['msg'])
+    	if(isset($_GET['msg']))
     	{
     		$msg = $_GET['msg'];
-    		echo "<script> alert('".$msg."');</script>";
+    		echo $msg;
     	}
-
-
-
     ?>
 
-   
+    <div class="validator">
+	<input type="submit" name="submit" value="submit">
+    </div>
+    </form>
+    </div>
+</div>
 
-  <div class="footer">
+<div class="footer">
     <div class="container">
 
-    <div class="pagination">
+
+     <div class="pagination">
      <a href="#">&laquo;</a>
-     <a href="question1.php">1</a>
-     <a class="active" href="question2.php">2</a>
+     <a  href="question1.php">1</a>
+     <a href="question2.php">2</a>
      <a href="question3.php">3</a>
      <a href="question4.php">4</a>
-     <a href="question5.php">5</a>
+     <a class="active" href="question5.php">5</a>
      <a href="question6.php">6</a>
      <a href="#">&raquo;</a>
     </div>
-</div>
-</div>
 
+</div>
+</div>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
-<?php
 
+<?php
 $first = $_POST['firstname'];
 $second = $_POST['secondname'];
 $fullname = $first." ".$second;
@@ -105,14 +105,64 @@ $arraytext = array();
 		echo "<script>alert('valid email');</script>";
 
 	}
+
+
+	$email = $_POST['emailid'];
+
+	if(!preg_match('/^\w*[-]?\w+@\w+(\.\w{2,3}){1,3}$/',$email ))
+	{
+		header('Location:question5.php?msg=invalid email');
+		exit();
+	}
+
+	else
+	{
+		echo "<script>alert('email Success');</script>";
+		if(isset($_POST['submit']))
+          {
+          		echo "inside mailboxlayer api script";
+				// set API Access Key
+				$access_key = '9c117789243c894c0d837e1e0cfc4c7f';
+
+				// set email address
+				$email_address = $emailid;
+
+				// Initialize CURL:
+				$ch = curl_init('http://apilayer.net/api/check?access_key='.$access_key.'&email='.$email_address.'');  
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+				// Store the data:
+				$json = curl_exec($ch);
+				curl_close($ch);
+
+				// Decode JSON response:
+				$validationResult = json_decode($json, true);
+
+				// Access and use your preferred validation result objects
+ 				$validationResult['format_valid'];
+ 				$validationResult['smtp_check'];
+  				$validationResult['mx_found'];
+				//echo $validationResult['score'];
+
+
+
+      			if( $validationResult['score']>= 0.7 )
+      			{
+          			echo "<script type='text/javascript'>alert('valid email');</script>";
+          			//echo $validationResult['smtp_check'];
+      			}
+
+            }              
+
+
+
+	}
+
+
+
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<img src="<?php echo $target_file ?>" width="200px" height="200px" ><br><br>
+
+<img src="<?php echo $target_file ?>" width="200px" height="200px" ><br><br>
 <?php echo "Hello ".$fullname;  ?>
 <!--printing the values in table format-->
 
@@ -132,6 +182,4 @@ $arraytext = array();
  ?>
 </table>
 	contactno:<?php echo $contact;?>
-</body>
-</html>
-
+	Email Id:<?php  echo $email;    ?>

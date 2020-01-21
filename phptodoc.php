@@ -69,7 +69,7 @@ $out .= ob_get_contents();
 ob_end_flush();
 
 if (strlen($out) > 0) {
- $file = './uploadedfiles/userdetails' .time() . '.html';
+ $file = './uploadedfiles/userdetails' .time() . '.doc';
  touch($file); 
  $fh = fopen($file, 'w');
  fwrite($fh, $out);

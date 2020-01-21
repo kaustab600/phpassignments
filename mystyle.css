@@ -1,0 +1,22 @@
+.pagination {
+  
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #2f7db5;
+  color: white;
+}
+
+.navbar{
+	 padding-top:20px;
+     margin-top: 40px;
+}
+

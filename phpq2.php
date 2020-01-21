@@ -1,5 +1,10 @@
 <?php
 
+$first = $_POST['firstname'];
+$second = $_POST['secondname'];
+$fullname = $first." ".$second;
+
+
  if ($_FILES["ff"]["name"]) {
 
          
@@ -21,11 +26,12 @@
 }
 else
 {   
-	echo "inside else";
+	//echo "inside else";
 	header('Location:question2.php?msg=No File uploaded');
 	exit();
 }
 
 ?>
 
-<img src="<?php echo $target_file ?>" >
+<img src="<?php echo $target_file ?>" width="200px" height="200px" ><br><br>
+<?php echo "Hello ".$fullname;  ?>

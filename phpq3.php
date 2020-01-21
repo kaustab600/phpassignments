@@ -1,5 +1,36 @@
 <?php
 
+$first = $_POST['firstname'];
+$second = $_POST['secondname'];
+$fullname = $first." ".$second;
+
+
+ if ($_FILES["ff"]["name"]) {
+
+         
+            $target_dir = "./uploadedfiles/";
+            $target_file = $target_dir . basename($_FILES["ff"]["name"]);
+            $_SESSION['target'] = $target_file;
+            $ftmp=$_FILES['ff']['tmp_name'];
+            //echo $_SESSION['imgfile'];
+            $_SESSION['img'] = $ftmp;
+            //echo $_SESSION['img'] ;
+            
+
+            if (move_uploaded_file($ftmp,$target_file)) {
+                $status = "The file " . basename($_FILES['ff']['name']) . " has been uploaded";
+
+            } else {
+                $status = "Sorry, there was a problem uploading your file.";
+            }
+}
+else
+{   
+  echo $_FILES["ff"]["name"];
+  //header('Location:question2.php?msg=No File uploaded');
+  //exit();
+}
+
 $pattern = '/^[a-zA-Z]+\|[0-9]+$/';
 
 $text_line1 = $_POST['subjectmarks'];
@@ -63,7 +94,8 @@ $arraytext = array();
 
   
 ?>
-
+<img src="<?php echo $target_file ?>" width="200px" height="200px" ><br><br>
+<?php echo "Hello ".$fullname;  ?>
 <!--printing the values in table format-->
 
 <table cellpadding="10" cellspacing="5" border="1px solid black">

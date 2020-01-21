@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title></title>
-    <script src="myscript.js"></script>
-    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+	<script src="myscript.js"></script>
+	<link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <style type="text/css">
-        *{
+         *{
       margin:0;
       padding: 0;
     }
@@ -49,7 +49,7 @@
       background-color: #0f0f0f;
     }
 
-    .main{
+     .main{
       float: left;
       width: 100%;
       
@@ -84,50 +84,20 @@
       background-color: black;
       color:white;
     }
-
     </style>
 </head>
 <body>
-
     <div class="header">
     <div class="container">
-        <h1>PHP ASSIGNMENTS 2</h1>
+        <h1>PHP ASSIGNMENTS 4</h1>
         <a class="logout" href="logout.php">LOGOUT</a>
-        <h3>Q2)Add a new field to accept user image in addition to the above fields.<br>On submit store the image in the backend and display it with the full name below it.</h3>
-        
-        
-    </div>
+    <h3>Q6) When the user submits the above form, 2 copies of the data will get created in a doc format. <br>One will store on the server and the other will be downloaded to the user submitting the data.<br>The information in the doc should be presented in a well-defined manner</h3>
+     </div>
     </div>
 
-    <div class="main">
-        <div class="container">
-	<form  name="form1" id="form1" method="post" action="phpq2.php" enctype="multipart/form-data">
-	
-    <div class="validator">
-        Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required onkeyup="OnBlurInput()"/>
-    </div>
 
-    <div class="validator">
-    Lastname:<input type="text" name="secondname" id="second" placeholder="enter Lastname" pattern="[a-zA-Z ]{1,}" required  onkeyup="OnBlurInput()"/>
-    </div>
-
-    <div class="validator">
-    Fullname:<input type="text" disabled="true" id="full" name="fullname" />
-    </div>
-
-    <div class="validator">
-     <input type="file" name="ff">
-    </div>
-
-    <div class="validator">
-	<input type="submit" name="submit" value="submit">
-    </div>
-    </form>
-</div>
-</div>
     <?php
-    
-            if($_GET['q'])
+          if($_GET['q'])
             {
                  $q = $_GET['q'];
                 //echo "question".$q.".php";
@@ -143,37 +113,66 @@
                 
                 
             }
-
-
-
-    	if($_GET['msg'])
-    	{
-    		$msg = $_GET['msg'];
-    		echo "<script> alert('".$msg."');</script>";
-    	}
-
-
-
     ?>
+    <div class="main">
+        <div class="container">
+	<form  name="form1" id="form1" method="post" action="sample.php" enctype="multipart/form-data">
+	<div class="validator">
+		Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required onkeyup="OnBlurInput()"/>
+	</div>
 
-   
+	<div class="validator">
+	Lastname:<input type="text" name="secondname" id="second" placeholder="enter Lastname" pattern="[a-zA-Z ]{1,}" required  onkeyup="OnBlurInput()"/>
+    </div>
 
-  <div class="footer">
+    <div class="validator">
+	Fullname:<input type="text" disabled="true" id="full" />
+    </div>
+
+
+    <div class="validator">
+     <input type="file" name="ff">
+
+    </div>
+
+
+    <div class="validator">
+    <textarea  name="subjectmarks" rows="6" cols="20" class="textpart" placeholder="enter subject|marks"></textarea>
+    </div>
+
+    <div class="validator">
+    	ContactNo:<input type="text" name="telephoneno" id="telno" placeholder="enter valid  contactno" onblur="func()" value="" required>
+    </div>
+
+
+    <div class="validator">
+    	emailid:<input type="text" id="emailid" name="emailid" placeholder="enter email id" onblur="emailcheck()" >
+    	
+    </div>
+
+    <div class="validator">
+	<input type="submit" name="submit" value="submit">
+    </div>
+</form>
+</div>
+</div>
+
+<div class="footer">
     <div class="container">
 
-    <div class="pagination">
+ <div class="pagination">
      <a href="#">&laquo;</a>
-     <a href="question1.php">1</a>
-     <a class="active" href="question2.php">2</a>
+     <a  href="question1.php">1</a>
+     <a href="question2.php">2</a>
      <a href="question3.php">3</a>
      <a href="question4.php">4</a>
      <a href="question5.php">5</a>
-     <a href="question6.php">6</a>
+     <a class="active" href="question6.php">6</a>
      <a href="#">&raquo;</a>
     </div>
-</div>
-</div>
 
+</div>
+</div>
 
 </body>
 </html>
