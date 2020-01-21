@@ -1,3 +1,26 @@
+<?php
+
+  if(isset($_POST['submit']))
+  {
+    
+    if($_POST['email'] and $_POST['passwordid'])
+    {
+      $email = $_POST['email'];
+      $password = $_POST['passwordid'];
+      session_start();
+      $_SESSION['mail'] = $email;
+      $_SESSION['pass'] = $password;
+    }
+    else
+    {
+      //echo "inside else";
+      header('Location:loginform.php?msg=enter login details');
+    }
+
+  }
+
+  ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,37 +98,14 @@
 
 </head>
 <body>
-  <?php
-
-  if(isset($_POST['submit']))
-  {
-    
-    if($_POST['email'] and $_POST['passwordid'])
-    {
-      $email = $_POST['email'];
-      $password = $_POST['passwordid'];
-      session_start();
-      $_SESSION['mail'] = $email;
-      $_SESSION['pass'] = $password;
-      
-    }
-    else
-    {
-      //echo "inside else";
-      header('Location:loginform.php?msg=enter login details');
-    }
-
-  }
-
-  ?>
-  
-  
   <div class="header">
     <div class="container">
         <h1>PHP ASSIGNMENTS</h1>
         <a class="logout" href="logout.php">LOGOUT</a>
     </div>
   </div>
+ 
+
 
   <div class="main">
     <div class="container">
@@ -127,7 +127,22 @@
   </div>
   </div>
   </div>
-  
-
 </body>
+<?php
+      if(isset($_GET['q']))
+      {
+         $q = $_GET['q'];
+                //echo "question".$q.".php";
+                if($q == '7')
+                {
+                    header('Location:logout.php');
+                }
+                else
+                {
+                   header("Location:question".$q.".php");
+                   exit();
+                }
+        
+      }
+    ?>
 </html>

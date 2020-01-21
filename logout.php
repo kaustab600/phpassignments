@@ -1,7 +1,7 @@
 <?php
  session_start();
- echo $_SESSION['mail'];
- echo $_SESSION['pass'];
+ //echo $_SESSION['mail'];
+ //echo $_SESSION['pass'];
 
 session_destroy();
 unset($_SESSION['mail']) ;

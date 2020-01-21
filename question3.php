@@ -1,3 +1,14 @@
+<?php
+session_start();
+//echo $_SESSION['mail'];
+//session_destroy();
+ if(!$_SESSION['mail'])
+ {
+  header('Location:logout.php');
+  exit();
+ }
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,7 +134,7 @@
     <?php
 
 
-            if($_GET['q'])
+            if(isset($_GET['q']))
             {
                 $q = $_GET['q'];
                 //echo "question".$q.".php";
@@ -140,16 +151,8 @@
             }
 
 
-    
 
-    		if($_GET['msg'])
-    		{
-    			$msg = $_GET['msg'];
-    			echo $msg;
-    		}
-
-
-        if($_GET['msg'])
+        if(isset($_GET['msg']))
         {
             $msg = $_GET['msg'];
             echo "<script> alert('".$msg."');</script>";

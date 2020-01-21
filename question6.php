@@ -1,3 +1,14 @@
+<?php
+session_start();
+//echo $_SESSION['mail'];
+//session_destroy();
+ if(!$_SESSION['mail'])
+ {
+  header('Location:logout.php');
+  exit();
+ }
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,7 +100,7 @@
 <body>
     <div class="header">
     <div class="container">
-        <h1>PHP ASSIGNMENTS 4</h1>
+        <h1>PHP ASSIGNMENTS 6</h1>
         <a class="logout" href="logout.php">LOGOUT</a>
     <h3>Q6) When the user submits the above form, 2 copies of the data will get created in a doc format. <br>One will store on the server and the other will be downloaded to the user submitting the data.<br>The information in the doc should be presented in a well-defined manner</h3>
      </div>
@@ -97,7 +108,7 @@
 
 
     <?php
-          if($_GET['q'])
+          if(isset($_GET['q']))
             {
                  $q = $_GET['q'];
                 //echo "question".$q.".php";

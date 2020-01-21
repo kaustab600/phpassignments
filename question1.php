@@ -101,7 +101,7 @@ session_start();
 </head>
 <body>
 	<?php
-			if($_GET['q'])
+			if(isset($_GET['q']))
 			{
 				 $q = $_GET['q'];
                 //echo "question".$q.".php";

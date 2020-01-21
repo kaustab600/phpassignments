@@ -1,3 +1,14 @@
+<?php
+session_start();
+//echo $_SESSION['mail'];
+//session_destroy();
+ if(!$_SESSION['mail'])
+ {
+  header('Location:logout.php');
+  exit();
+ }
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,7 +100,7 @@
 <body>
      <div class="header">
     <div class="container">
-        <h1>PHP ASSIGNMENTS 4</h1>
+        <h1>PHP ASSIGNMENTS 5</h1>
         <a class="logout" href="logout.php">LOGOUT</a>
     <h3>Q5)Add a new single text field to the above form that will accept email id. Do not use email id input field type.</h3>
      </div>
@@ -126,7 +137,7 @@
     </div>
     <?php
 
-        if($_GET['q'])
+        if(isset($_GET['q']))
             {
                  $q = $_GET['q'];
                 //echo "question".$q.".php";
