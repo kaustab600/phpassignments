@@ -28,7 +28,7 @@ session_start();
         float:left;
         display: inline-block;
         width: 100%;
-        height:25vh;
+        height:27vh;
         background-color: #3e82b3;
         
     }
@@ -157,7 +157,7 @@ session_start();
 
 
     <div class="validator">
-    	emailid:<input type="text" id="emailid" name="emailid" placeholder="enter email id" onblur="emailcheck()" >
+    	emailid:<input type="text" id="emailid" name="emailid" placeholder="enter email id" onchange="emailcheck()" >
     	
     </div>
 

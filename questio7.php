@@ -1,15 +1,24 @@
 <?php
 
+  
   if(isset($_POST['submit']))
   {
+    $useremail = "kaustab.roy@innoraft.com";
+    $pass = "12345";
     
     if($_POST['email'] and $_POST['passwordid'])
     {
       $email = $_POST['email'];
       $password = $_POST['passwordid'];
-      session_start();
-      $_SESSION['mail'] = $email;
-      $_SESSION['pass'] = $password;
+      if($email!=$useremail or $password!=$pass)
+      {
+        header('Location:loginform.php?msg=authorization decline');
+      }
+      else{
+            session_start();
+            $_SESSION['mail'] = $email;
+            $_SESSION['pass'] = $password;
+          }
     }
     else
     {

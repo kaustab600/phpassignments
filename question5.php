@@ -133,7 +133,7 @@ session_start();
     </div>
 
 	<div class="validator">
-    	emailid:<input type="text" id="emailid" name="emailid" placeholder="enter email id" onblur="emailcheck()" >
+    	emailid:<input type="text" id="emailid" name="emailid" placeholder="enter email id" onchange="emailcheck()" >
     </div>
     <?php
 

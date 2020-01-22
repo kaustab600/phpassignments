@@ -134,7 +134,7 @@ session_start();
     <div class="main">
     	<div class="container">
 
-<form  name="form1" id="form1" method="post" action="http://localhost/sample.php">
+<form  name="form1" id="form1" method="post" action="phpq1.php">
 	<div class="validator">
 		Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required onkeyup="OnBlurInput()"/>
 	</div>
@@ -145,6 +145,10 @@ session_start();
 
     <div class="validator">
 	Fullname:<input type="text" disabled="true" id="full" />
+    </div>
+
+    <div class="validator">
+  <input type="submit" name="submit" value="submit">
     </div>
 
 </form>

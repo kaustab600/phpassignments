@@ -3,9 +3,9 @@
 $first = $_POST['firstname'];
 $second = $_POST['secondname'];
 $fullname = $first." ".$second;
+$fname = $_FILES["ff"]["tmp_name"];
 
-
- if ($_FILES["ff"]["name"]) {
+ if (!empty($fname)){
 
          
             $target_dir = "./uploadedfiles/";
@@ -26,9 +26,9 @@ $fullname = $first." ".$second;
 }
 else
 {   
-  echo $_FILES["ff"]["name"];
-  //header('Location:question2.php?msg=No File uploaded');
-  //exit();
+  
+  header('Location:question3.php?msg=No File uploaded');
+  exit();
 }
 
 $pattern = '/^[a-zA-Z]+\|[0-9]+$/';
