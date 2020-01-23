@@ -1,35 +1,7 @@
 <?php
 
-$first = $_POST['firstname'];
-$second = $_POST['secondname'];
-$fullname = $first." ".$second;
-$fname = $_FILES["ff"]["tmp_name"];
-
- if (!empty($fname)){
-
-         
-            $target_dir = "./uploadedfiles/";
-            $target_file = $target_dir . basename($_FILES["ff"]["name"]);
-            $_SESSION['target'] = $target_file;
-            $ftmp=$_FILES['ff']['tmp_name'];
-            //echo $_SESSION['imgfile'];
-            $_SESSION['img'] = $ftmp;
-            //echo $_SESSION['img'] ;
-            
-
-            if (move_uploaded_file($ftmp,$target_file)) {
-                $status = "The file " . basename($_FILES['ff']['name']) . " has been uploaded";
-
-            } else {
-                $status = "Sorry, there was a problem uploading your file.";
-            }
-}
-else
-{   
-  
-  header('Location:question3.php?msg=No File uploaded');
-  exit();
-}
+if(isset($_POST['submit']))
+{
 
 $pattern = '/^[a-zA-Z]+\|[0-9]+$/';
 
@@ -70,8 +42,7 @@ $text_line1 = $_POST['subjectmarks'];
 
   if(!preg_match("/^[a-zA-Z]+\|[0-9]+$/",$value1 ))
     {
-  		header('Location:question3.php?msg=enter valid value');
-   		exit();
+  		echo "<script>alert('please provide inputs informat: SUBJECT|MARKS');</script>";
     }
   }
 
@@ -92,24 +63,21 @@ $arraytext = array();
     //echo "<br>";
   }
 
-  
-?>
-<img src="<?php echo $target_file ?>" width="200px" height="200px" ><br><br>
-<?php echo "Hello ".$fullname;  ?>
-<!--printing the values in table format-->
+ $_SESSION['textarray'] = $arraytext;
+//printing the values in table format
 
-<table cellpadding="10" cellspacing="5" border="1px solid black">
-  <tr>
+echo "<table cellpadding='10' cellspacing='5' border='1px solid black'>";
+ echo "<tr>
     <th>subject</th>
     <th>marks</th>
-  </tr>
- <?php
+  </tr>";
+ 
  foreach($arraytext as $key => $value)
  {
     echo "<tr><td>".$key."</td><td>".$value."</td></tr>";
 
  }
-
+echo "</table>";
+}
 
  ?>
-</table>

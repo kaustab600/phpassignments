@@ -1,13 +1,5 @@
 <?php
-session_start();
-//echo $_SESSION['mail'];
-//session_destroy();
- if(!isset($_SESSION['mail']))
- {
-  header('Location:logout.php');
-  exit();
- }
-
+require('sessioncheck.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,64 +16,39 @@ session_start();
      </div>
     </div>
 
-
-    <?php
-          if(isset($_GET['q']))
-            {
-                 $q = $_GET['q'];
-                //echo "question".$q.".php";
-                if($q == '7')
-                {
-                    header('Location:logout.php');
-                }
-                else
-                {
-                   header("Location:question".$q.".php");
-                   exit();
-                }
-                
-                
-            }
-    ?>
     <div class="main">
         <div class="container">
-	<form  name="form1" id="form1" method="post" action="sample.php" enctype="multipart/form-data">
-	<div class="validator">
-		Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required />
-	</div>
+	<form  name="form1" id="form1" >
+	       
+        <img src="<?php echo $_SESSION['target']; ?>" width="100px" height="100px"><br>
 
-	<div class="validator">
-	Lastname:<input type="text" name="secondname" id="second" placeholder="enter Lastname" pattern="[a-zA-Z ]{1,}" required />
-    </div>
+		    Firstname:<input type="text" value="<?php echo $_SESSION['first'];?>" disabled="true" /><br>
+	    
+        Lastname:<input type="text" value="<?php echo $_SESSION['second'];?>" disabled="true"  /><br>
+    
+    	  ContactNo:<input type="text" value="<?php echo $_SESSION['contactno'];?>" disabled="true" /><br>
 
-    <div class="validator">
-	Fullname:<input type="text" disabled="true" id="full" />
-    </div>
+        emailid:<input type="text" value="<?php echo $_SESSION['emailid'];?>" disabled="true" /><br>
 
-
-    <div class="validator">
-     <input type="file" name="ff">
-
-    </div>
-
-
-    <div class="validator">
-    <textarea  name="subjectmarks" rows="6" cols="20" class="textpart" placeholder="enter subject|marks"></textarea>
-    </div>
-
-    <div class="validator">
-    	ContactNo:<input type="text" name="telephoneno" id="telno" placeholder="enter valid  contactno" required>
-    </div>
+       <table cellpadding="10" cellspacing="5" border="1px solid black">
+            <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+           </tr>
+           <?php
+                    $array = $_SESSION['textarray']; 
+                    foreach($array as $key => $value)
+                    {
+                        echo "<tr><td>".$key."</td><td>".$value."</td></tr>";
+                    }
 
 
-    <div class="validator">
-    	emailid:<input type="text" id="emailid" name="emailid" placeholder="enter email id" >
-    	
-    </div>
-
-    <div class="validator">
-	<input type="submit" name="submit" value="submit">
-    </div>
+           ?>
+            
+        </table>
+    
+    <a href="phptodoc.php">Download</a>
+    
 </form>
 </div>
 </div>

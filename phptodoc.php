@@ -9,10 +9,11 @@
 
 		 $first = $_SESSION['first'] ;
          $second = $_SESSION['second'] ;
-         $email = $_SESSION['email'] ;
-         $contact = $_SESSION['contact'] ;
-         $imgfile = $_SESSION['target'];
-         
+         $email = $_SESSION['emailid'] ;
+         $contact = $_SESSION['contactno'] ;
+         $imgfile = basename($_SESSION['target']);
+         $imgf = $_SESSION['img'];
+         $array1 = $_SESSION['textarray']; 
 
 
 header("Content-type: application/vinod.ms-word");
@@ -34,10 +35,12 @@ echo "<body>";
 //print the content
 
 echo "<br><br><br><br>";
+echo $imgf;
 echo "<table cellpadding='10' cellspacing='5' border ='1px solid black'>";
 echo "<tr>";
-echo "<td><img src='/var/www/html/uploadedfiles/".$imgfile."'width='100px' height='100px'></td>";
-//readfile('var/www/html/uploadedfiles/head_logo.jpg');
+//echo "<td><img src='/var/www/html/uploadedfiles/".$imgfile."'width='100px' height='100px'></td>";
+//C:\xampp\htdocs\PhpTest\uploadedfiles
+echo "<td><img src='uploadedfiles/".$imgf."'width='100px' height='100px'></td>";
 echo "</tr>";
 echo "<tr>";
 echo "<td>FirstName</td>";
@@ -55,6 +58,23 @@ echo "<tr>";
 echo "<td>contactno</td>";
 echo "<td>".$contact."</td>";
 echo "</tr>";
+
+echo "<tr>";
+echo "<td>";
+
+echo "<table cellspacing='5' cellpadding='10' border='1px solid black'>";
+echo "<tr><th>Subject</th><th>Marks</th></tr>";
+	
+   foreach($array1 as $key => $value)
+    {
+        echo "<tr><td>".$key."</td><td>".$value."</td></tr>";
+    }
+
+
+echo "</table>";
+echo "</td>";
+echo "</tr>";
+
 echo "</table>";
 
 

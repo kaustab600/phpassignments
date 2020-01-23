@@ -1,13 +1,5 @@
 <?php
-session_start();
-//echo $_SESSION['mail'];
-//session_destroy();
- if(!isset($_SESSION['mail']))
- {
- 	header('Location:logout.php');
- 	exit();
- }
-
+require('sessioncheck.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,61 +19,16 @@ session_start();
 
     <div class="main">
         <div class="container">
-	<form  name="form1" id="form1" method="post" action="phpq4.php" enctype="multipart/form-data">
-        <div class="validator">
-        Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required />
-    </div>
-
-    <div class="validator">
-    Lastname:<input type="text" name="secondname" id="second" placeholder="enter Lastname" pattern="[a-zA-Z ]{1,}" required  />
-    </div>
-
-    <div class="validator">
-    Fullname:<input type="text" disabled="true" id="full" name="fullname" />
-    </div>
-
-    <div class="validator">
-     <input type="file" name="ff">
-    </div>
-    <div class="validator">
-    <textarea  name="subjectmarks" rows="6" cols="20" class="textpart" placeholder="enter subject|marks"></textarea>
-    </div>
-
-	 <div class="validator">
+	<form  name="form1" id="form1" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+    
     	ContactNo:<input type="text" name="telephoneno" id="telno" placeholder="enter valid  contactno"  required>
-    </div>
+  
+	<input type="submit" name="submit" value="submit">
 
     <?php
-
-        if(isset($_GET['q']))
-            {
-                $q = $_GET['q'];
-                //echo "question".$q.".php";
-                if($q == '7')
-                {
-                    header('Location:logout.php');
-                }
-                else
-                {
-                   header("Location:question".$q.".php");
-                   exit();
-                }
-                
-                
-            }
-
-    	if(isset($_GET['msg']))
-    	{
-    		$msg = $_GET['msg'];
-    		echo $msg;
-    	}
-
-
+    include('phpq4.php');
+       
     ?>
-
-    <div class="validator">
-	<input type="submit" name="submit" value="submit">
-    </div>
 
 </form>
 </div>
@@ -102,6 +49,6 @@ session_start();
     </div>
 </div>
 </div>
-<script src="myscript.js"></script>
+<script src="myscriptq4.js"></script>
 </body>
 </html>
