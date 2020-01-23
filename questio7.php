@@ -1,7 +1,7 @@
 <?php
-
-  
-  if(isset($_POST['submit']))
+ 
+ session_start();
+  if(isset($_POST['email']))
   {
     $useremail = "kaustab.roy@innoraft.com";
     $pass = "12345";
@@ -15,7 +15,7 @@
         header('Location:loginform.php?msg=authorization decline');
       }
       else{
-            session_start();
+            //session_start();
             $_SESSION['mail'] = $email;
             $_SESSION['pass'] = $password;
           }
@@ -27,6 +27,15 @@
     }
 
   }
+  
+else{
+
+  if(!isset($_SESSION['mail']))
+  {
+  header('Location:loginform.php');
+  exit();
+   }
+}
 
   ?>
 

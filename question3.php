@@ -2,7 +2,7 @@
 session_start();
 //echo $_SESSION['mail'];
 //session_destroy();
- if(!$_SESSION['mail'])
+ if(!isset($_SESSION['mail']))
  {
   header('Location:logout.php');
   exit();
@@ -13,90 +13,7 @@ session_start();
 <html>
 <head>
 	<title></title>
-    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
-    <script src="myscript.js"></script>
-    <style type="text/css">
-        *{
-      margin:0;
-      padding: 0;
-    }
-    .container{
-      width:1000px;
-      margin: 0 auto;
-    }
-    .header{
-        float:left;
-        display: inline-block;
-        width: 100%;
-        height:25vh;
-        background-color: #3e82b3;
-        
-    }
-
-    .header h1{
-          margin-top: 35px;
-          margin-left: 330px;
-          color:white;
-          text-shadow: 2px 2px 4px black;
-          display:inline-block;
-    }
-
-    .header h3{
-        margin-top:10px;
-        padding-top: 10px;
-        color:white;
-        text-shadow: 1px 1px black;
-    }
-
-    .header .logout{
-      float: right;
-      margin-top: 32px;
-      color:white;
-    }
-
-    .header a{
-      padding: 10px;
-      text-decoration: none;
-      background-color: #0f0f0f;
-    }
-
-     .main{
-      float: left;
-      width: 100%;
-      
-    }
-
-    .main #form1{
-        border:1px solid black;
-        margin-top:20px;
-        box-shadow: 3px 3px 4px grey;
-        padding: 20px;
-    }
-
-    #form1 input{
-        margin: 10px;
-    }
-
-    .footer{
-      float:left;
-      width:100%;
-
-    }
-
-    .footer .pagination{
-      margin-top:50px;
-      margin-left:340px;
-    }
-    .footer a{
-      padding:10px;
-    }
-
-    .footer a:hover{
-      background-color: black;
-      color:white;
-    }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="mystylephp3.css"/>
 </head>
 <body>
 
@@ -114,11 +31,11 @@ session_start();
         <div class="container">
 	<form  name="form1" id="form1" method="post" action="phpq3.php" enctype="multipart/form-data">
         <div class="validator">
-        Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required onkeyup="OnBlurInput()"/>
+        Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required />
     </div>
 
     <div class="validator">
-    Lastname:<input type="text" name="secondname" id="second" placeholder="enter Lastname" pattern="[a-zA-Z ]{1,}" required  onkeyup="OnBlurInput()"/>
+    Lastname:<input type="text" name="secondname" id="second" placeholder="enter Lastname" pattern="[a-zA-Z ]{1,}" required />
     </div>
 
     <div class="validator">
@@ -186,6 +103,7 @@ session_start();
 
 </div>
 </div>
+    <script src="myscript.js"></script>
 
 </body>
 </html>

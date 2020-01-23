@@ -1,19 +1,21 @@
 <?php
-		session_start();
-
-		$out = '';
-		ob_start();
-
-		if($_SESSION['first'])
+	   session_start();
+	   if($_SESSION['first'])
 		{
+       $first =  $_SESSION['first'];
+       $second =  $_SESSION['second'];
+       $email =  $_SESSION['email'];
+       $contact =  $_SESSION['contact'];
+       $imgname	=	$_SESSION['target'];
 
-		 $first = $_SESSION['first'] ;
-         $second = $_SESSION['second'] ;
-         $email = $_SESSION['email'] ;
-         $contact = $_SESSION['contact'] ;
-         $imgfile = $_SESSION['target'];
-         
-
+       $file = "details.doc";
+       $handle = fopen($file,"w");
+       fwrite($handle, $first." ".$second);
+       fwrite($handle, PHP_EOL);
+       fwrite($handle, $email);
+       fwrite($handle, PHP_EOL);
+       fwrite($handle, $contact);
+       fclose($handle);
 
 header("Content-type: application/vinod.ms-word");
 
@@ -36,7 +38,7 @@ echo "<body>";
 echo "<br><br><br><br>";
 echo "<table cellpadding='10' cellspacing='5' border ='1px solid black'>";
 echo "<tr>";
-echo "<td><img src='/var/www/html/uploadedfiles/".$imgfile."'width='100px' height='100px'></td>";
+echo "<td><img src='/var/www/html/uploadedfiles/".$imgname."'width='100px' height='100px'></td>";
 //readfile('var/www/html/uploadedfiles/head_logo.jpg');
 echo "</tr>";
 echo "<tr>";
@@ -63,30 +65,13 @@ echo "</body>";
 //end html tag
 
 echo "</html>";
-
-$out .= ob_get_contents();
-
-ob_end_flush();
-
-if (strlen($out) > 0) {
- $file = './uploadedfiles/userdetails' .time() . '.doc';
- touch($file); 
- $fh = fopen($file, 'w');
- fwrite($fh, $out);
- fclose($fh);
-} 
-
-//session_destroy();
-
 }
-
 else{
 
 	echo "session fault";
 	session_destroy();
 
 }
-
 
 
 ?>

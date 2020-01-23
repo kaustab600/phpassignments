@@ -33,9 +33,9 @@
 		   if (!empty($_FILES) && isset($_FILES['ff'])) {
 
          
-            $target_dir = "/uploadedfiles/";
+            $target_dir = "./uploadedfiles/";
             $target_file = $target_dir . basename($_FILES["ff"]["name"]);
-            $_SESSION['target'] = $target_file;
+            $_SESSION['target'] = $_FILES["ff"]["name"];
             $ftmp=$_FILES['ff']['tmp_name'];
             //echo $_SESSION['imgfile'];
             $_SESSION['img'] = $ftmp;
@@ -180,17 +180,17 @@ curl_close($ch);
 $validationResult = json_decode($json, true);
 
 // Access and use your preferred validation result objects
- $validationResult['format_valid'];
- $validationResult['smtp_check'];
-  $validationResult['mx_found'];
-echo $validationResult['score'];
+// $validationResult['format_valid'];
+ //$validationResult['smtp_check'];
+  //$validationResult['mx_found'];
+//echo $validationResult['score'];
 
 
 
-      if( $validationResult['score']>= 0.7 )
+      if( isset($validationResult['score'])>= 0.7 )
       {
           echo "<script type='text/javascript'>alert('valid email');</script>";
-          echo $validationResult['smtp_check'];
+          //echo $validationResult['smtp_check'];
       }
 
 }              
@@ -199,7 +199,7 @@ echo $validationResult['score'];
 ?>
 
 
-<a href="phptodoc.php">Download</a>
+<a href="phptodoc2.php">Download</a>
 
 </body>
 </html>

@@ -8,7 +8,7 @@ $fullname = $first." ".$second;
  if ($_FILES["ff"]["name"]) {
 
          
-            $target_dir = "/uploadedfiles/";
+            $target_dir = "./uploadedfiles/";
             $target_file = $target_dir . basename($_FILES["ff"]["name"]);
             $_SESSION['target'] = $target_file;
             $ftmp=$_FILES['ff']['tmp_name'];

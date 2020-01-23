@@ -1,13 +1,23 @@
 
-function OnBlurInput () {
+document.getElementById('second').onkeyup = function changeContent() {
+	var str1 = document.getElementById('first').value;
+	var str2  = document.getElementById('second').value;
+
+   document.getElementById('full').value = str1.concat(" ",str2);
+
+   
+}
+
+
+/*function OnBlurInput () {
 			
 			var str1 = document.getElementById("first").value;
 			var str2 = document.getElementById("second").value;
 			document.getElementById('full').value= str1.concat(" ",str2);
 
-        }
+        }*/
+ document.getElementById('telno').onblur = function func(){
 
- function func(){
 			var validcharacters = /^(\+91)\d{10}$/;
 			var validcharacters1 = /^\d{10}$/;
 			var str1 = document.getElementById('telno').value;
@@ -30,10 +40,10 @@ function OnBlurInput () {
       		    }
       			
       		}
-		}
+		
+	}
 
-function emailcheck()
-		{
+	document.getElementById('emailid').onkeyup = function emailcheck(){
 			//var pattern = /^\w*[-]?\w+@\w+(\.\w{2,3}){1,3}$/ ;
 			var pattern = /^\w*[-]?\w+@\w+(\.\w{2,3}){1,3}$/;
 			var inputtext = document.getElementById("emailid").value;
@@ -48,7 +58,7 @@ function emailcheck()
 			{
 				alert("successful email");
 			}
-
-		}
+}
+		
 
 
