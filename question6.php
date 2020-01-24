@@ -22,32 +22,44 @@ require('sessioncheck.php');
 	       
         <img src="<?php echo $_SESSION['target']; ?>" width="100px" height="100px"><br>
 
-		    Firstname:<input type="text" value="<?php echo $_SESSION['first'];?>" disabled="true" /><br>
+		    Firstname:<input type="text" value="<?php
+              if(isset($_SESSION['first'])){echo $_SESSION['first'];}
+              ?>" disabled="true" /><br>
 	    
-        Lastname:<input type="text" value="<?php echo $_SESSION['second'];?>" disabled="true"  /><br>
+        Lastname:<input type="text" value="<?php
+              if(isset($_SESSION['second'])){echo $_SESSION['second'];}
+              ?>" disabled="true"  /><br>
     
-    	  ContactNo:<input type="text" value="<?php echo $_SESSION['contactno'];?>" disabled="true" /><br>
+    	  ContactNo:<input type="text" value="<?php
+              if(isset($_SESSION['contactno'])){echo $_SESSION['contactno'];}
+              ?>" disabled="true" /><br>
 
-        emailid:<input type="text" value="<?php echo $_SESSION['emailid'];?>" disabled="true" /><br>
+        emailid:<input type="text" value="<?php
+              if(isset($_SESSION['emailid'])){echo $_SESSION['emailid'];}
+              ?>" disabled="true" /><br>
 
        <table cellpadding="10" cellspacing="5" border="1px solid black">
             <tr>
                 <th>Subject</th>
                 <th>Marks</th>
            </tr>
-           <?php
-                    $array = $_SESSION['textarray']; 
-                    foreach($array as $key => $value)
+           <?php    if(isset($_SESSION['textarray']))
                     {
-                        echo "<tr><td>".$key."</td><td>".$value."</td></tr>";
+                        $array = $_SESSION['textarray']; 
+                        foreach($array as $key => $value)
+                        {
+                            echo "<tr><td>".$key."</td><td>".$value."</td></tr>";
+                        }
+
                     }
-
-
            ?>
             
         </table>
-    
+
+    <div id="anchortag">
+    <h3>Download the userdetails</h3>
     <a href="phptodoc.php">Download</a>
+    </div>
     
 </form>
 </div>
@@ -71,5 +83,5 @@ require('sessioncheck.php');
 </div>
 
 </body>
-	<script src="myscript.js"></script>
+	
 </html>

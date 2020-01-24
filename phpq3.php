@@ -1,5 +1,5 @@
 <?php
-
+ $flag = 0;
 if(isset($_POST['submit']))
 {
 
@@ -29,7 +29,7 @@ $text_line1 = $_POST['subjectmarks'];
     if($len == 0)
     { 
       
-      //unsetting the entries with string length 0
+      //------unsetting the entries with string length 0
       unset($text_line[$key]);
      
     }
@@ -42,14 +42,16 @@ $text_line1 = $_POST['subjectmarks'];
 
   if(!preg_match("/^[a-zA-Z]+\|[0-9]+$/",$value1 ))
     {
+      $flag = 1;
   		echo "<script>alert('please provide inputs informat: SUBJECT|MARKS');</script>";
+
     }
   }
 
   //echo $key1." ".$value1."<br>";
 
-
-
+if($flag != 1)
+{
 $arraytext = array();
 
   //print_r($text_line);
@@ -64,7 +66,7 @@ $arraytext = array();
   }
 
  $_SESSION['textarray'] = $arraytext;
-//printing the values in table format
+//-----printing the values in table format
 
 echo "<table cellpadding='10' cellspacing='5' border='1px solid black'>";
  echo "<tr>
@@ -78,6 +80,9 @@ echo "<table cellpadding='10' cellspacing='5' border='1px solid black'>";
 
  }
 echo "</table>";
+}
+
+
 }
 
  ?>

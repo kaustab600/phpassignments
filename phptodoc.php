@@ -35,13 +35,12 @@ echo "<body>";
 //print the content
 
 echo "<br><br><br><br>";
-echo $imgf;
+echo "<img src='/var/www/html/uploadedfiles/".$imgfile."'width='100px' height='100px' border='1px solid black'><br>";
+//echo $imgf;
 echo "<table cellpadding='10' cellspacing='5' border ='1px solid black'>";
-echo "<tr>";
-//echo "<td><img src='/var/www/html/uploadedfiles/".$imgfile."'width='100px' height='100px'></td>";
+
 //C:\xampp\htdocs\PhpTest\uploadedfiles
-echo "<td><img src='uploadedfiles/".$imgf."'width='100px' height='100px'></td>";
-echo "</tr>";
+//echo "<td><img src='uploadedfiles/".$imgf."'width='100px' height='100px'></td>";
 echo "<tr>";
 echo "<td>FirstName</td>";
 echo "<td>".$first."</td>";
@@ -59,8 +58,7 @@ echo "<td>contactno</td>";
 echo "<td>".$contact."</td>";
 echo "</tr>";
 
-echo "<tr>";
-echo "<td>";
+echo "</table>";
 
 echo "<table cellspacing='5' cellpadding='10' border='1px solid black'>";
 echo "<tr><th>Subject</th><th>Marks</th></tr>";
@@ -70,10 +68,6 @@ echo "<tr><th>Subject</th><th>Marks</th></tr>";
         echo "<tr><td>".$key."</td><td>".$value."</td></tr>";
     }
 
-
-echo "</table>";
-echo "</td>";
-echo "</tr>";
 
 echo "</table>";
 

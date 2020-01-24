@@ -5,7 +5,7 @@ require('sessioncheck.php');
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="mystylephp1.css"/>	
+	<link rel="stylesheet" type="text/css" href="mystylephp1.css?v=1"/>	
 </head>
 <body>
 	<!--<?php
@@ -55,14 +55,14 @@ require('sessioncheck.php');
 	Fullname:<input type="text" disabled="true" id="full" />
     </div>
 
-    <?php
-include('phpq1.php');
-?>
+    
 
     <div class="validator">
   <input type="submit" name="submit" value="submit">
     </div>
-
+      <?php
+include('phpq1.php');
+?>
 </form>
 </div>
 </div>
@@ -71,14 +71,14 @@ include('phpq1.php');
 <div class="footer">
     <div class="container">
      <div class="pagination">
-     <a href="#">&laquo;</a>
+     
      <a class="active" href="question1.php">1</a>
      <a href="question2.php">2</a>
      <a href="question3.php">3</a>
      <a href="question4.php">4</a>
      <a href="question5.php">5</a>
      <a href="question6.php">6</a>
-     <a href="#">&raquo;</a>
+     <a href="question2.php">&raquo;</a>
     </div>
 </div>
 </div>

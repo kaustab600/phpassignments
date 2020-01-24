@@ -6,7 +6,7 @@
 <html>
 <head>
 	<title></title>
-    <link rel="stylesheet" type="text/css" href="mystylephp3.css"/>
+    <link rel="stylesheet" type="text/css" href="mystylephp3.css?v=1"/>
 </head>
 <body>
 

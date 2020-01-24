@@ -2,11 +2,10 @@
 if(isset($_POST['submit']))
 {
    
-$first = $_POST['firstname'];
-$second = $_POST['secondname'];
+$first = $_SESSION['first'];
+$second = $_SESSION['second'];
 $fullname = $first." ".$second;
-$_SESSION['first'] = $first;
-$_SESSION['second'] = $second;
+
 
 
  if ($_FILES["ff"]["name"]) {

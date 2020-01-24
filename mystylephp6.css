@@ -1,21 +1,33 @@
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
   *{
       margin:0;
       padding: 0;
     }
+
+    body{
+        font-family: 'Montserrat', sans-serif;
+    }
+
     .container{
       width:1000px;
       margin: 0 auto;
     }
+
+    
+
     .header{
         float:left;
         display: inline-block;
         width: 100%;
         height:27vh;
         background-color: #3e82b3;
+
         
     }
 
     .header h1{
+          font-weight: 200;
           margin-top: 35px;
           margin-left: 330px;
           color:white;
@@ -24,6 +36,8 @@
     }
 
     .header h3{
+      font-weight: 200;
+
         margin-top:10px;
         padding-top: 10px;
         color:white;
@@ -49,6 +63,7 @@
     }
 
     .main #form1{
+      text-align: center;
         border:1px solid black;
         margin-top:20px;
         box-shadow: 3px 3px 4px grey;
@@ -58,6 +73,49 @@
     #form1 input{
         margin: 10px;
     }
+
+     #form1 input[placeholder]{
+      text-align: center;
+    }
+
+    #form1 input[type="text"]{
+      text-align: center;
+        width:25%;
+        height:30px;
+        margin: 10px;
+        border:1.5px solid black;
+        border-radius: 15px;
+    }
+
+
+   #form1 #anchortag h3{
+     color:red;
+     margin-top: 10px;
+     margin-bottom: 20px;
+   }
+
+   #form1 #anchortag a{
+    text-decoration: none;
+    border:1px solid black;
+    color:black;
+    background-color: yellow;
+    box-shadow: 1px 1px black;
+    padding:5px 10px;
+   }
+
+   #form1 #anchortag a:hover{
+    box-shadow: 2px 2px 4px black;
+   }
+
+   #form1 img{
+    border:1px solid black;
+
+   }
+
+   #form1 table{
+    
+    transform: translateX(430px);
+   }
 
     .footer{
       float:left;
@@ -69,6 +127,14 @@
       margin-top:50px;
       margin-left:340px;
     }
+
+  .footer .pagination a.active {
+  background-color: #2f7db5;
+  color: white;
+}
+
+
+
     .footer a{
       padding:10px;
       text-decoration: none;

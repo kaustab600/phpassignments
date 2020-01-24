@@ -32,8 +32,12 @@
 			z-index: 1;
 			width:350px;
 			padding: 30px;
-			box-shadow: 2px 2px 6px black;
+			box-shadow: 4px 4px 6px black;
 			transform: translate(55%,50%);
+		}
+
+		.loginmain:hover{
+			box-shadow: 8px 8px 16px  black;
 		}
 
 		.loginmain h1{
@@ -51,10 +55,28 @@
 			padding: 8px 0px;
 		}
 
-		.loginmain input{
+		.loginmain input[type="text"]{
 			margin-left: 85px;
+			width:50%;
+			height:20px;
 			border:1px solid black;
 			padding: 3px;
+			border-radius:8px;
+		}
+
+		.loginmain input[type="password"]{
+			margin-left: 85px;
+			width:50%;
+			height:20px;
+			border:1px solid black;
+			padding: 3px;
+			border-radius:8px;
+		}
+
+
+
+		.loginmain input:hover{
+			box-shadow: 2px 2px 4px black;
 		}
 
 		.loginmain input[type=submit]{
@@ -70,8 +92,8 @@
 
 		.loginmain input[type=submit]:hover{
 				background-color: #99c7de;
-				box-shadow: 2px 2px 3px black;
-				transition: background-color 2s,box-shadow 1s;
+				box-shadow: 2px 2px 4px black;
+				
 		}
 
 	</style>

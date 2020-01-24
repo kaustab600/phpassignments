@@ -5,7 +5,7 @@ require('sessioncheck.php');
 <html>
 <head>
 	<title></title>
-    <link rel="stylesheet" type="text/css" href="mystylephp2.css"/>
+    <link rel="stylesheet" type="text/css" href="mystylephp2.css?v=1"/>
 </head>
 <body>
 
@@ -24,16 +24,17 @@ require('sessioncheck.php');
 	<form  name="form1" id="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
 	
     <div class="validator">
-        Firstname:<input type="text" name="firstname" id="first" pattern="[a-zA-Z ]{1,}" placeholder="enter Firstname" required />
+        Firstname:<input type="text" value="<?php
+              if(isset($_SESSION['first'])){echo $_SESSION['first'];}
+              ?>" disabled="true"/>
     </div>
 
     <div class="validator">
-    Lastname:<input type="text" name="secondname" id="second" placeholder="enter Lastname" pattern="[a-zA-Z ]{1,}" required />
+    Lastname:<input type="text" value="<?php
+              if(isset($_SESSION['second'])){echo $_SESSION['second'];}
+              ?>" disabled="true"  />
     </div>
 
-    <div class="validator">
-    Fullname:<input type="text" disabled="true" id="full" name="fullname" />
-    </div>
 
     <div class="validator">
      <input type="file" name="ff">
