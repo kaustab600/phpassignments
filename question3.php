@@ -41,14 +41,14 @@
 
  
      <div class="pagination">
-     <a href="#">&laquo;</a>
+     <a href="question2.php">&laquo;</a>
      <a href="question1.php">1</a>
      <a href="question2.php">2</a>
      <a class="active" href="question3.php">3</a>
      <a href="question4.php">4</a>
      <a href="question5.php">5</a>
      <a href="question6.php">6</a>
-     <a href="#">&raquo;</a>
+     <a href="question4.php">&raquo;</a>
     </div>
 
 </div>

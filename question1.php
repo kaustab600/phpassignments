@@ -8,26 +8,7 @@ require('sessioncheck.php');
 	<link rel="stylesheet" type="text/css" href="mystylephp1.css?v=1"/>	
 </head>
 <body>
-	<!--<?php
-		/*	if(isset($_GET['q']))
-			{
-				 $q = $_GET['q'];
-                //echo "question".$q.".php";
-                if($q == '7')
-                {
-                    header('Location:logout.php');
-                }
-                else
-                {
-                   header("Location:question".$q.".php");
-                   exit();
-                }
-				
-			}*/
-
-
-	?>-->
-
+	
 	<div class="header">
     <div class="container">
         <h1>PHP ASSIGNMENTS 1</h1>
