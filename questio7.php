@@ -1,17 +1,20 @@
 <?php
- 
+ require ('connection.php');
  session_start();
   if(isset($_POST['email']))
   {
-    $useremail = "kaustab.roy@innoraft.com";
-    $pass = "12345";
+    //$useremail = "kaustab.roy@innoraft.com";
+    //$pass = "12345";
     
     if($_POST['email'] and $_POST['passwordid'])
     {
       $email = $_POST['email'];
       $password = $_POST['passwordid'];
-      if($email!=$useremail or $password!=$pass)
+      $query1 = "select uid from loginuser where username='".$email."' and password='".md5($password)."'";
+      $rs = mysqli_query($conn,$query1);
+      if(mysqli_num_rows($rs) == 0)
       {
+
         header('Location:loginform.php?msg=authorization decline');
       }
       else{

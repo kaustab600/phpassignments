@@ -22,6 +22,7 @@
 		<div class="parameters">
 			<input type="submit" name="submit" value="Login">
 		</div>
+		<a href="forgotpass.php">Forgot Password</a>
 		
 	</form>
 </div>
