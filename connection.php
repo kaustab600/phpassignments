@@ -2,10 +2,10 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "12345";
-$dbname = "loginvalidation";
-//$password = "";
-//$dbname = "test";
+//$password = "12345";
+//$dbname = "loginvalidation";
+$password = "";
+$dbname = "test";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password , $dbname);
@@ -17,7 +17,7 @@ if (!$conn) {
 else
 {
 
-	echo "connection sucessful";
+	//echo "connection sucessful";
 
 }
 ?>

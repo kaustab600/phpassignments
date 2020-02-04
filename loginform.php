@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	session_destroy();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +27,9 @@
 		<div class="parameters">
 			<input type="submit" name="submit" value="Login">
 		</div>
+		<div id="pass">
 		<a href="forgotpass.php">Forgot Password</a>
-		
+		</div>
 	</form>
 </div>
 </div>
