@@ -1,10 +1,10 @@
 <?php
 	session_start();
 
-	/*if (isset($_SESSION['LAST_ACTIVITY'])) {
-    // request 30 minates ago
-		echo time()."<br>";
-		echo $_SESSION['LAST_ACTIVITY']."<br>";
+	if (isset($_SESSION['LAST_ACTIVITY'])) {
+    
+		//echo time()."<br>";
+		//echo $_SESSION['LAST_ACTIVITY']."<br>";
 		$diff = time() - $_SESSION['LAST_ACTIVITY'];
 		echo "diff ".$diff;
 		if($diff>20)
@@ -13,11 +13,10 @@
     		session_unset();
     		header('Location:loginform.php');
 		}
-		$_SESSION['LAST_ACTIVITY'] = time();
+		
     }
-		$_SESSION['LAST_ACTIVITY'] = time();
-  //echo $_SESSION['mail'];
-  //session_destroy();*/
+		//$_SESSION['LAST_ACTIVITY'] = time();....initialzed at forgotpass.php
+  
  if(!isset($_SESSION['uid']))
  {
  	header('Location:logout.php');

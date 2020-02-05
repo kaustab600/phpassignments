@@ -54,6 +54,7 @@
 				$row = mysqli_fetch_assoc($rs);
 				session_start();
 				$_SESSION['uid'] = $row['uid'];
+				$_SESSION['LAST_ACTIVITY'] = time();//........session initialized for last activty
 				header('Location:newpassword.php');
 			}
 			else
